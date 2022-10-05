@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -28,11 +29,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = '1000'
+EMAIL_HOST_USER = 'seidikoura@weg.net'
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
+# EMAIL_USE_SSL = False
 
-EMAIL_HOST = 'smtp.gmail.com    '
-EMAIL_HOST_USER = '1ac3da19af1985'
-EMAIL_HOST_PASSWORD = 'faae54e47e7a1d'
-EMAIL_PORT = '2525'
 
 # Application definition
 

@@ -40,7 +40,7 @@ def home(request):
             }
             
             ) 
-            send_mail('The contact form sub', 'Message', 'noreply@weg.net', ['brunokoura@gmail.com'], html_message=html)
+            send_mail('The contact form sub', 'Message', 'noreply@weg.net', ['koura@mailtrap.io'], html_message=html, fail_silently=False)
             
             return redirect('home')
     else:
