@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 
 
@@ -34,7 +35,12 @@ EMAIL_PORT = '1000'
 EMAIL_HOST_USER = 'seidikoura@weg.net'
 EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = False
-# EMAIL_USE_SSL = False
+EMAIL_USE_SSL = False
+
+# EMAIL_HOST = 'smtp.mailtrap.io'
+# EMAIL_HOST_USER = '1ac3da19af1985'
+# EMAIL_HOST_PASSWORD = 'faae54e47e7a1d'
+# EMAIL_PORT = '2525'
 
 
 # Application definition
@@ -85,8 +91,10 @@ WSGI_APPLICATION = 'astec.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': 'racdev01:1521/DWA',
+        'USER': 'sales_wmo_mi',
+        'PASSWORD': 'sales_wmo_mi',
     }
 }
 
