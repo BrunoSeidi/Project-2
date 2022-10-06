@@ -30,6 +30,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = '1000'
 EMAIL_HOST_USER = 'seidikoura@weg.net'
