@@ -1,7 +1,9 @@
+from xmlrpc.client import boolean
 from django import forms
 
 
 material_type = (
+    ('S', 'Select one option'),
     ('M', 'Search with material'),
     ('SN', 'Search with serial number'),
 )

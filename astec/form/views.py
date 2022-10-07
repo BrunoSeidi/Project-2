@@ -36,7 +36,6 @@ def home(request):
                 'item': item_number,
                 'date': date,
                 'commetary': commentary,
-
             }
             
             ) 
