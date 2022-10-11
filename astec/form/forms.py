@@ -10,19 +10,19 @@ material_type = (
 )
 
 component_type = (
-    ('A', 'TESTE1')
-    ('B', 'TESTE2')
+    ('A', 'TESTE1'),
+    ('B', 'TESTE2'),
 )
 
 
 class Form(forms.Form):
     type = forms.ChoiceField(choices=material_type)
-    serial_number = forms.CharField()
-    item_number = forms.IntegerField()
+    serialNumber = forms.CharField(label='Serial Number')
+    itemNumber = forms.IntegerField(label='Item Number')
     date = forms.DateField()
-    fase = forms.CharField()
-    capacity = forms.IntegerField()
-    center_quantity = forms.IntegerField(label='Center Quantity')
-    component_quantity = forms.IntegerField(label='Quantity')
-    component_selection = forms.ChoiceField(choices=component_type, label='Component Selection')
+    phase = forms.CharField()
+    capacity = forms.CharField()
+    centerQuantity = forms.IntegerField(label='Center Quantity')
+    componentQuantity = forms.IntegerField(label='Component Quantity')
+    componentSelection = forms.ChoiceField(choices=component_type, label='Component Selection')
     commentary = forms.CharField(widget=forms.Textarea())

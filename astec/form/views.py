@@ -19,21 +19,32 @@ def home(request):
         
         if form.is_valid():
             type = form.cleaned_data['type']
-            serial_number = form.cleaned_data['serial_number']
-            item_number = form.cleaned_data['item_number']
+            serialNumber = form.cleaned_data['serialNumber']
+            itemNumber = form.cleaned_data['itemNumber']
             date = form.cleaned_data['date']
+            phase = form.cleaned_data['phase']
+            capacity = form.cleaned_data['capacity']
+            centerQuantity = form.cleaned_data['centerQuantity']
+            componentQuantity = form.cleaned_data['componentQuantity']
+            componentSelection = form.cleaned_data['componentSelection']
             commentary = form.cleaned_data['commentary']
+
 
             html = render_to_string('emails/email.html', {
                 'type': type,
-                'serial_number': serial_number,
-                'item': item_number,
+                'serialNumber': serialNumber,
+                'item': itemNumber,
                 'date': date,
+                'phase':phase,
+                'capacity':capacity,
+                'centerQuantity':centerQuantity,
+                'componentQuantity':componentQuantity,
+                'componentSelection': componentSelection,
                 'commentary': commentary,
             }
             
             ) 
-            send_mail('The contact form sub', 'Message', 'brunokoura@gmail.com', ['koura@weg.net'], html_message=html, fail_silently=False)
+            send_mail('The contact form sub', 'Message', 'noreply@weg.net', ['koura@weg.net'], html_message=html, fail_silently=False)
             
             return redirect('home')
     else:
