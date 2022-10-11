@@ -31,18 +31,13 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 EMAIL_HOST = 'localhost'
-EMAIL_PORT = '1000'
-EMAIL_HOST_USER = 'seidikoura@weg.net'
+EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = '1000'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = False
 
-# EMAIL_HOST = 'smtp.mailtrap.io'
-# EMAIL_HOST_USER = '1ac3da19af1985'
-# EMAIL_HOST_PASSWORD = 'faae54e47e7a1d'
-# EMAIL_PORT = '2525'
 
 
 # Application definition

@@ -18,9 +18,6 @@ def home(request):
         form = Form(request.POST)
         
         if form.is_valid():
-            code = form.cleaned_data['code']
-            email = form.cleaned_data['email']
-            name = form.cleaned_data['name']
             type = form.cleaned_data['type']
             serial_number = form.cleaned_data['serial_number']
             item_number = form.cleaned_data['item_number']
@@ -28,18 +25,15 @@ def home(request):
             commentary = form.cleaned_data['commentary']
 
             html = render_to_string('emails/email.html', {
-                'code': code,
-                'email': email,
-                'name': name,
                 'type': type,
                 'serial_number': serial_number,
                 'item': item_number,
                 'date': date,
-                'commetary': commentary,
+                'commentary': commentary,
             }
             
             ) 
-            send_mail('The contact form sub', 'Message', 'noreply@weg.net', ['koura@mailtrap.io'], html_message=html, fail_silently=False)
+            send_mail('The contact form sub', 'Message', 'brunokoura@gmail.com', ['koura@weg.net'], html_message=html, fail_silently=False)
             
             return redirect('home')
     else:
