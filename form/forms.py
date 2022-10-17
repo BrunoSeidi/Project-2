@@ -1,11 +1,8 @@
 from django import forms
 
-material = 1
-serial = 2
-
 material_type = (
-    (material, 'Search with material'),
-    (serial, 'Search with serial number'),
+    ('material', 'Search with material'),
+    ('serial', 'Search with serial number'),
 )
 
 component_type = (
@@ -17,11 +14,11 @@ component_type = (
 
 class Form(forms.Form):
     type = forms.ChoiceField(choices=material_type)
-    serialNumber = forms.CharField(label='Serial Number')
-    itemNumber = forms.IntegerField(label='Item Number')
+    serialNumber = forms.CharField(label='Serial Number', required=False)
+    itemNumber = forms.IntegerField(label='Item Number', required=False)
     date = forms.DateField(label='Manufactoring Date',widget=forms.DateInput(attrs={'placeholder':'Ex: 10/05/2022'}))
-    phase = forms.CharField()
-    capacity = forms.CharField()
+    phase = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Ex: Monophasic'}))
+    capacity = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Ex: 15cv'}))
     centerQuantity = forms.IntegerField(label='Center Quantity')
     componentQuantity = forms.IntegerField(label='Component Quantity')
     componentSelection = forms.ChoiceField(choices=component_type, label='Component Selection')

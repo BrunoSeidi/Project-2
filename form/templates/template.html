@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>WEG Kit's Request</title>
+    <link rel="stylsheet" href="{% static 'css/style.css' %}" type="text/css">
+</head>
+<body>
+    <h2> Engine Information</h2>
+    <table>
+    <form action="." method="POST">
+        {% csrf_token %}
+        <tbody>
+            <tr>
+                <th>Type:</th>
+                <td>{{form.type}}</td>
+            </tr>
+            <tr>
+                <th>Serial Number:</th>
+                <td>{{form.serialNumber}}</td>
+                <th>or Material Number:</th>
+                <td>{{form.itemNumber}}</td>
+            </tr>
+            <tr>
+                <th>Manufactoring Date</th>
+                <td>{{form.date}}</td>
+                <th>Phase</th>
+                <td>{{form.phase}}</td>
+                <th>Capacity</th>
+                <td>{{form.capacity}}</td>
+                <th>Center Quantity</th>
+                <td>{{form.centerQuantity}}</td>
+            </tr>
+
+        </tbody>
+    </table>
+    <h2>Component</h2>
+    <table>
+        <tbody>
+            <tr>
+                <th>Select the component</th>
+                <td>{{form.componentSelection}}</td>
+            </tr>
+            <tr>
+                <th>Component Quantity</th>
+                <td>{{form.componentQuantity}}</td>
+            </tr>
+            <tr>
+                <th>Commentary</th>
+                <td>{{form.commentary}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="submit" value="Submit">    
+    </form>
+</body>
+</html>
