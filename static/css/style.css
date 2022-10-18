@@ -1,11 +1,13 @@
-h2{
-    background-color: #0072c6;
-    color: white;
-    font-family: inherit;
-}
 th{
     text-align: left;
 }
 button{
     border-radius: 12px;
+}
+
+h2{
+    background-color: #0072c6;
+    color: white;
+    font-family: inherit;
+    line-height: 1.2;
 }
