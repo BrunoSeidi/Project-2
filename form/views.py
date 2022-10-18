@@ -35,7 +35,7 @@ def home(request):
             }
             
             ) 
-            send_mail('The contact form sub', 'Message', 'noreply@weg.net', ['koura@weg.net'], html_message=html, fail_silently=False)
+            send_mail('The contact form sub', 'Message', 'hilarion@weg.net', ['koura@weg.net'], html_message=html, fail_silently=False)
             
             return redirect('home')
     else:
