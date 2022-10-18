@@ -21,7 +21,6 @@ def home(request):
             componentSelection = form.cleaned_data['componentSelection']
             commentary = form.cleaned_data['commentary']
 
-
             html = render_to_string('emails/email.html', {
                 'type': type,
                 'serialNumber': serialNumber,
