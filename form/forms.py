@@ -1,4 +1,5 @@
 from django import forms
+import pandas as pd
 
 material_type = (
     ('material', 'Search with material'),
@@ -13,7 +14,7 @@ component_type = (
 
 
 class Form(forms.Form):
-    type = forms.ChoiceField(choices=material_type)
+    type = forms.ChoiceField(choices=material_type, initial="Select One Option")
     serialNumber = forms.CharField(label='Serial Number', required=False)
     itemNumber = forms.IntegerField(label='Item Number', required=False)
     date = forms.DateField(label='Manufactoring Date',widget=forms.DateInput(attrs={'placeholder':'Ex: 10/05/2022'}))

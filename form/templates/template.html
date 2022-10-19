@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <title>WEG Kit's Request</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css"/>
+    
 </head>
 <body>
     <h2> Engine Information</h2>
@@ -15,13 +16,13 @@
         {% csrf_token %}
         <tbody>
             <tr>
-                <th>Type:</th>
+                <th>Type</th>
                 <td>{{form.type}}</td>
             </tr>
             <tr>
                 <th>Serial Number</th>
                 <td>{{form.serialNumber}}</td>
-                <th>or Material Number:</th>
+                <th>or Material Number</th>
                 <td>{{form.itemNumber}}</td>
             </tr>
             <tr>
@@ -58,7 +59,7 @@
             </tr>
         </tbody>
     </table>
-    <input type="submit" value="Submit">    
+    <input type="submit" id="button" value="Submit">    
     </form>
 </body>
 </html>

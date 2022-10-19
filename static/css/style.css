@@ -1,8 +1,10 @@
 th{
     text-align: left;
 }
-button{
+
+#button{
     border-radius: 12px;
+    color: #68b68b;
 }
 
 h2{
