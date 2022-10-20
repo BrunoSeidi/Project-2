@@ -12,7 +12,7 @@
 <body>
     <h2> Engine Information</h2>
     <table>
-    <form action="." method="POST">
+    <form action="." method="POST" hx-post=".">
         {% csrf_token %}
         <tbody>
             <tr>
@@ -49,6 +49,14 @@
                 <th>Component Quantity</th>
                 <td>{{form.componentQuantity}}</td>
             </tr>
+            <tr>
+                <th>Select the component</th>
+                <td>{{form.componentSelection1}}</td>
+            </tr>
+            <tr>
+                <th>Component Quantity</th>
+                <td>{{form.componentQuantity1}}</td>
+            </tr>
         </tbody>
     </table>
     <table>
@@ -61,5 +69,6 @@
     </table>
     <input type="submit" id="button" value="Submit">    
     </form>
+    <p>ADICIONAR BOTÃO "ADD" PARA INCREMENTAR MAIS PEÇAS.</p>
 </body>
 </html>

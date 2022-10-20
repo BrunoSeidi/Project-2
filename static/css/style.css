@@ -3,8 +3,13 @@ th{
 }
 
 #button{
-    border-radius: 12px;
-    color: #68b68b;
+    background-color: #3bb472;
+    margin: auto;
+    display: flex;
+    padding: 4px 20px;
+    border-radius: 5px;
+    font-size: medium;
+    font-family: inherit;
 }
 
 h2{
