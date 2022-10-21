@@ -8,9 +8,9 @@ material_type = (
 )
 
 component_type = (
-    ('A', 'TESTE1'),
-    ('B', 'TESTE2'),
-    ('C', 'TESTE3')
+    (1, 'AIR FILTER'),
+    (2, 'ALUMINIUM FAN'),
+    (3, 'BEARING CAP DE')
 )
 
 
