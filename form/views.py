@@ -35,7 +35,7 @@ def home(request):
             }
             
             ) 
-            send_mail('Kits solicitation', 'Message', 'noreply@weg.net', ['koura@weg.net'], html_message=html, fail_silently=False)
+            send_mail('Kits solicitation', 'Message', 'no-reply@weg.net', ['koura@weg.net'], html_message=html, fail_silently=False)
             
             return redirect('home')
     else:

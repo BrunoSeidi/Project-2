@@ -1,74 +1,92 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <title>WEG Kit's Request</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css"/>
-    
-</head>
-<body>
-    <h2> Engine Information</h2>
-    <table>
-    <form action="." method="POST" hx-post=".">
-        {% csrf_token %}
-        <tbody>
-            <tr>
-                <th>Type</th>
-                <td>{{form.type}}</td>
-            </tr>
-            <tr>
-                <th>Serial Number</th>
-                <td>{{form.serialNumber}}</td>
-                <th>or Material Number</th>
-                <td>{{form.itemNumber}}</td>
-            </tr>
-            <tr>
-                <th>Manufactoring Date</th>
-                <td>{{form.date}}</td>
-                <th>Phase</th>
-                <td>{{form.phase}}</td>
-                <th>Capacity</th>
-                <td>{{form.capacity}}</td>
-                <th>Center Quantity</th>
-                <td>{{form.centerQuantity}}</td>
-            </tr>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
 
-        </tbody>
-    </table>
-    <h2>Component</h2>
-    <table>
-        <tbody>
-            <tr>
-                <th>Select the component</th>
-                <td>{{form.componentSelection}}</td>
-            </tr>
-            <tr>
-                <th>Component Quantity</th>
-                <td>{{form.componentQuantity}}</td>
-            </tr>
-            <tr>
-                <th>Select the component</th>
-                <td>{{form.componentSelection1}}</td>
-            </tr>
-            <tr>
-                <th>Component Quantity</th>
-                <td>{{form.componentQuantity1}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <table>
-        <tbody>
-            <tr>
-                <th>Commentary</th>
-                <td>{{form.commentary}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <input type="submit" id="button" value="Submit">    
-    </form>
-    <p>ADICIONAR BOTÃO "ADD" PARA INCREMENTAR MAIS PEÇAS.</p>
+</head>
+
+<body>
+    <div>
+        <h2> Engine Information</h2>
+        <table>
+            <form action="." method="POST" hx-post=".">
+                {% csrf_token %}
+                <tbody>
+                    <tr>
+                        <th>Type</th>
+                        <td>{{form.type}}</td>
+                    </tr>
+                    <tr>
+                        <th>Serial Number</th>
+                        <td>{{form.serialNumber}}</td>
+                        <th>or Material Number</th>
+                        <td>{{form.itemNumber}}</td>
+                    </tr>
+                    <tr>
+                        <th>Manufactoring Date</th>
+                        <td>{{form.date}}</td>
+                        <th>Phase</th>
+                        <td>{{form.phase}}</td>
+                        <th>Capacity</th>
+                        <td>{{form.capacity}}</td>
+                        <th>Center Quantity</th>
+                        <td>{{form.centerQuantity}}</td>
+                    </tr>
+
+                </tbody>
+        </table>
+    </div>
+    </div>
+    <div>
+        <h2>Component</h2>
+        <table id="component" class="component-form">
+            <tbody>
+                <tr>
+                    <th>Select the component</th>
+                    <td>{{form.componentSelection}}</td>
+                </tr>
+                <tr>
+                    <th>Component Quantity</th>
+                    <td>{{form.componentQuantity}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <button id="add-more" type="button">Add component</button>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Commentary</th>
+                    <td>{{form.commentary}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="submit" id="button" value="Submit">
+        </form>
+    </div>
+
+
+    <script>
+        const AddMoreBtn = document.getElementById('add-more')
+        AddMoreBtn.addEventListener('click', add_new_form)
+
+        function add_new_form(event) {
+            if (event) {
+                even.preventDefault()
+            }
+            //add new empty form
+            const formCopy = document.getElementById('component-form')
+            const formElement = document.getElementById('component').cloneNode(true)
+            formElement.setAttribute('class', 'component-form')
+            formCopy.append(formElement)
+        }
+    </script>
+
 </body>
+
 </html>
