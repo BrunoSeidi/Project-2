@@ -43,20 +43,25 @@
         </table>
     </div>
     </div>
-    <div>
+    <div id="component-form">
         <h2>Component</h2>
-        <table id="component" class="component-form">
-            <tbody>
-                <tr>
-                    <th>Select the component</th>
-                    <td>{{form.componentSelection}}</td>
-                </tr>
-                <tr>
-                    <th>Component Quantity</th>
-                    <td>{{form.componentQuantity}}</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="parts-form">
+            <table id="component">
+
+                    <tbody>
+                        <tr>
+                            <th>Select the component</th>
+                            <td>{{form.componentSelection}}</td>
+                        </tr>
+                        <tr>
+                            <th>Component Quantity</th>
+                            <td>{{form.componentQuantity}}</td>
+                        </tr>
+                    </tbody>
+                    <div id="form-added"></div>
+
+            </table>
+        </div>
         <button id="add-more" type="button">Add component</button>
         <table>
             <tbody>
@@ -74,18 +79,26 @@
     <script>
         const AddMoreBtn = document.getElementById('add-more')
         AddMoreBtn.addEventListener('click', add_new_form)
-
         function add_new_form(event) {
             if (event) {
-                even.preventDefault()
+                event.preventDefault()
             }
+            //id
+            const newId = document.getElementsByClassName('parts-form')
+            const idIncrement = newId.length + 1
+            //
+            const formAdd = document.getElementById('form-added')
             //add new empty form
-            const formCopy = document.getElementById('component-form')
-            const formElement = document.getElementById('component').cloneNode(true)
-            formElement.setAttribute('class', 'component-form')
-            formCopy.append(formElement)
+            var componentForm = document.getElementById('component').cloneNode(true)
+            componentForm.setAttribute('class', 'parts-form')
+
+            //id
+            componentForm.setAttribute('id', `form-${idIncrement}`)
+            //add
+            formAdd.append(componentForm)
         }
     </script>
+
 
 </body>
 
