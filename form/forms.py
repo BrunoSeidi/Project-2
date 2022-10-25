@@ -1,6 +1,4 @@
-from turtle import width
 from django import forms
-import pandas as pd
 
 material_type = (
     ('material', 'Search with material'),
@@ -24,7 +22,5 @@ class Form(forms.Form):
     centerQuantity = forms.IntegerField(label='Center Quantity')
     componentSelection = forms.ChoiceField(choices=component_type, label='Component Selection')
     componentQuantity = forms.IntegerField(label='Component Quantity')
-    componentSelection1 = forms.ChoiceField(choices=component_type, label='Component Selection', required=False)
-    componentQuantity1 = forms.IntegerField(label='Component Quantity', required=False)
     commentary = forms.CharField(widget=forms.Textarea(attrs={"rows":8, "cols":80}))
     

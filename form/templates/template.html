@@ -58,7 +58,6 @@
                     </tr>
                 </tbody>
                 <div id="form-added"></div>
-
             </table>
         </div>
         <button id="add-more" type="button">Add component</button>
@@ -90,7 +89,7 @@
             var componentForm = document.getElementById('component').cloneNode(true)
             componentForm.setAttribute('class', 'parts-form')
             //id increment
-            componentForm.setAttribute('id', `form-${idIncrement}`)
+            componentForm.setAttribute('id', `component-${idIncrement}`)
             formAdd.append(componentForm)
         }
     </script>
