@@ -6,9 +6,9 @@ from django.template.loader import render_to_string
 
 
 def home(request):
+    print(request)
     if request.method == 'POST':
         form = Form(request.POST)
-        
         if form.is_valid():
             type = form.cleaned_data['type']
             serialNumber = form.cleaned_data['serialNumber']
@@ -20,7 +20,7 @@ def home(request):
             componentQuantity = form.cleaned_data['componentQuantity']
             componentSelection = form.cleaned_data['componentSelection']
             commentary = form.cleaned_data['commentary']
-
+            
             html = render_to_string('emails/email.html', {
                 'type': type,
                 'serialNumber': serialNumber,
@@ -42,5 +42,5 @@ def home(request):
         form = Form()
         
     return render(request, 'template.html', {
-        'form': form 
+        'form': form
     })

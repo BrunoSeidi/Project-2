@@ -18,3 +18,7 @@ h2{
     font-family: inherit;
     line-height: 1.2;
 }
+
+.component{
+    visibility: hidden;
+}
