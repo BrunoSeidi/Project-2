@@ -72,7 +72,7 @@
                     <tr>
                         <th>Component Quantity</th>
                         <td>{{form.componentQuantity}}</td>
-                        <td> <button id="add-more" type="button">Add component</button></td>
+                        <td> <button id="add-more" type="button">Add more components</button></td>
                     </tr>
                 </tbody>
                 <div id="form-added"></div>
@@ -88,6 +88,8 @@
                         <td>{{form.componentSelection2}}</td>
                         <th>Select the component</th>
                         <td>{{form.componentSelection3}}</td>
+                        <th>Select the component</th>
+                        <td>{{form.componentSelection4}}</td>
                     </tr>
                     <tr>
                         <th>Component Quantity</th>
@@ -96,6 +98,8 @@
                         <td>{{form.componentQuantity2}}</td>
                         <th>Component Quantity</th>
                         <td>{{form.componentQuantity3}}</td>
+                        <th>Component Quantity</th>
+                        <td>{{form.componentQuantity4}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -116,8 +120,12 @@
     <script>
         const AddMoreBtn = document.getElementById('add-more')
         AddMoreBtn.onclick = function(){
-            document.getElementById('extraField').style.visibility="visible";
-            alert('Extra fields are not obligatory to be filled')             
+            if (document.getElementById('extraField').style.visibility == 'collapse'){
+                document.getElementById('extraField').style.visibility="visible";
+                alert('Extra fields are not required to be filled')             
+            } else{
+                document.getElementById('extraField').style.visibility='collapse';
+            }
         }
 
         //////////////////////

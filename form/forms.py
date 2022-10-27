@@ -25,6 +25,7 @@ class Form(forms.Form):
     phase = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Ex: Monophasic'}))
     capacity = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Ex: 15cv'}))
     centerQuantity = forms.IntegerField(label='Center Quantity')
+
     componentSelection = forms.ChoiceField(choices=component_type, label='Component Selection', required=True)
     componentQuantity = forms.IntegerField(label='Component Quantity', required=True)
     componentSelection1 = forms.ChoiceField(choices=component_type, label='Component Selection', required=False)
@@ -33,5 +34,7 @@ class Form(forms.Form):
     componentQuantity2 = forms.IntegerField(label='Component Quantity', required=False)
     componentSelection3 = forms.ChoiceField(choices=component_type, label='Component Selection', required=False)
     componentQuantity3 = forms.IntegerField(label='Component Quantity', required=False)
+    componentSelection4 = forms.ChoiceField(choices=component_type, label='Component Selection', required=False)
+    componentQuantity4 = forms.IntegerField(label='Component Quantity', required=False)
     commentary = forms.CharField(widget=forms.Textarea(attrs={"rows":8, "cols":80}))
 
