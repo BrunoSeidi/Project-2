@@ -30,8 +30,8 @@ def home(request):
             componentSelection2 = form.cleaned_data['componentSelection2']
             componentQuantity3 = form.cleaned_data['componentQuantity3']
             componentSelection3 = form.cleaned_data['componentSelection3']
-            componentQuantity4 = form.cleaned_data['componentQuantity3']
-            componentSelection4 = form.cleaned_data['componentSelection3']
+            componentQuantity4 = form.cleaned_data['componentQuantity4']
+            componentSelection4 = form.cleaned_data['componentSelection4']
             commentary = form.cleaned_data['commentary']
             
             html = render_to_string('emails/email.html', {
