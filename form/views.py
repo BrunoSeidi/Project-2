@@ -59,7 +59,7 @@ def home(request):
             }
             
             ) 
-            send_mail('ATENÇÃO', 'Message', 'no-reply@weg.net', ['koura@weg.net'], html_message=html, fail_silently=False)
+            send_mail('Kits request', 'Message', 'no-reply@weg.net', ['koura@weg.net'], html_message=html, fail_silently=False)
             
             return redirect('home')
     else:

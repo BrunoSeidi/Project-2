@@ -1,6 +1,18 @@
 th{
     text-align: left;
+    margin-top: 5px;
 }
+
+#component{
+    border-collapse:separate; 
+}
+
+#extraField{
+    border-collapse:separate; 
+    border-spacing: 10px;
+    visibility: collapse;
+    
+  }
 
 #button{
     background-color: #00c851;
@@ -17,8 +29,4 @@ h2{
     color: white;
     font-family: inherit;
     line-height: 1.2;
-}
-
-#extraField{
-    visibility: collapse;
 }

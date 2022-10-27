@@ -68,36 +68,40 @@
                     <tr>
                         <th>Select the component</th>
                         <td>{{form.componentSelection}}</td>
-                    </tr>
-                    <tr>
                         <th>Component Quantity</th>
                         <td>{{form.componentQuantity}}</td>
-                        <td> <button id="add-more" type="button">Add more components</button></td>
                     </tr>
                 </tbody>
                 <div id="form-added"></div>
             </table>
+            
             <table id="extraField">
                 <hr>
                 <tbody>
-                    
                     <tr>
-                        <th>Select the component</th>
+                        <th>Select the Component</th>
                         <td>{{form.componentSelection1}}</td>
-                        <th>Select the component</th>
-                        <td>{{form.componentSelection2}}</td>
-                        <th>Select the component</th>
-                        <td>{{form.componentSelection3}}</td>
-                        <th>Select the component</th>
-                        <td>{{form.componentSelection4}}</td>
-                    </tr>
-                    <tr>
                         <th>Component Quantity</th>
                         <td>{{form.componentQuantity1}}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Select the Component</th>
+                        <td>{{form.componentSelection2}}</td>
                         <th>Component Quantity</th>
                         <td>{{form.componentQuantity2}}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Select the Component</th>
+                        <td>{{form.componentSelection3}}</td>
                         <th>Component Quantity</th>
                         <td>{{form.componentQuantity3}}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Select the Component</th>
+                        <td>{{form.componentSelection4}}</td>
                         <th>Component Quantity</th>
                         <td>{{form.componentQuantity4}}</td>
                     </tr>
@@ -113,6 +117,7 @@
                 </tr>
             </tbody>
         </table>
+        <button id="add-more" type="button">Add more components</button>
         <input type="submit" id="button" value="Submit">
         </form>
     </div>
@@ -121,7 +126,7 @@
         const AddMoreBtn = document.getElementById('add-more')
         AddMoreBtn.onclick = function(){
             if (document.getElementById('extraField').style.visibility == 'collapse'){
-                document.getElementById('extraField').style.visibility="visible";
+                document.getElementById('extraField').style.visibility='visible';
                 alert('Extra fields are not required to be filled')             
             } else{
                 document.getElementById('extraField').style.visibility='collapse';
