@@ -6,6 +6,7 @@ material_type = (
 )
 
 component_type = (
+    ('None', 'SELECT ONE OPTION'),
     ('AIR FILTER', 'AIR FILTER'),
     ('ALUMINIUM FAN', 'ALUMINIUM FAN'),
     ('BEARING CAP DE', 'BEARING CAP DE')
@@ -15,6 +16,7 @@ component_type = (
 class Form(forms.Form):
     branchName = forms.CharField(widget=forms.TextInput(attrs={"size":50}))
     email = forms.EmailField(widget=forms.EmailInput(attrs={"size": 40}))
+    name = forms.CharField(widget=forms.TextInput(attrs={"size":50}))
     
     type = forms.ChoiceField(choices=material_type, initial="Select One Option")
     serialNumber = forms.CharField(label='Serial Number', required=False)

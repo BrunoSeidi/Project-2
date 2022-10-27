@@ -11,8 +11,10 @@ def home(request):
         form = Form(request.POST)
         print(form)
         if form.is_valid():
+            name = form.cleaned_data['name']
             branchName = form.cleaned_data['branchName']
             email = form.cleaned_data['email']
+
             type = form.cleaned_data['type']
             serialNumber = form.cleaned_data['serialNumber']
             itemNumber = form.cleaned_data['itemNumber']
@@ -26,10 +28,12 @@ def home(request):
             componentSelection1 = form.cleaned_data['componentSelection1']
             componentQuantity2 = form.cleaned_data['componentQuantity2']
             componentSelection2 = form.cleaned_data['componentSelection2']
+            componentQuantity3 = form.cleaned_data['componentQuantity3']
+            componentSelection3 = form.cleaned_data['componentSelection3']
             commentary = form.cleaned_data['commentary']
             
             html = render_to_string('emails/email.html', {
-
+                'name': name,
                 'branchName': branchName,
                 'email': email,
                 'type': type,
@@ -45,6 +49,8 @@ def home(request):
                 'componentSelection1': componentSelection1,
                 'componentQuantity2': componentQuantity2,
                 'componentSelection2': componentSelection2,
+                'componentQuantity3': componentQuantity3,
+                'componentSelection3': componentSelection3,
                 'commentary': commentary,
             }
             

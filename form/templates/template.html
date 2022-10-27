@@ -21,10 +21,14 @@
                     <tr>
                         <th>Branch Name</th>   
                         <td>{{form.branchName}}</td>
-                    </tr>
-                    <tr>
                         <th>Email</th>
                         <td>{{form.email}}</td>
+                    </tr>
+                    <tr>
+                        <th>Name</th>
+                        <td>{{form.name}}</td>
+                    </tr>
+                    <tr>
                     </tr>
                 </tbody>
             </table>    
@@ -76,6 +80,7 @@
             <table id="extraField">
                 <hr>
                 <tbody>
+                    
                     <tr>
                         <th>Select the component</th>
                         <td>{{form.componentSelection1}}</td>
@@ -111,7 +116,8 @@
     <script>
         const AddMoreBtn = document.getElementById('add-more')
         AddMoreBtn.onclick = function(){
-        document.getElementById('extraField').style.visibility="visible";             
+            document.getElementById('extraField').style.visibility="visible";
+            alert('Extra fields are not obligatory to be filled')             
         }
 
         //////////////////////
