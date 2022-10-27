@@ -20,5 +20,5 @@ h2{
 }
 
 #extraField{
-    visibility: hidden;
+    visibility: collapse;
 }
