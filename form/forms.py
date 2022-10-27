@@ -13,8 +13,9 @@ component_type = (
 
 
 class Form(forms.Form):
-    branchName = forms.CharField(widget=forms.Textarea(attrs={"rows": 1,"cols":50}))
-    email = forms.EmailField(widget=forms.EmailInput(attrs={"cols": 50}))
+    branchName = forms.CharField(widget=forms.TextInput(attrs={"size":50}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={"size": 40}))
+    
     type = forms.ChoiceField(choices=material_type, initial="Select One Option")
     serialNumber = forms.CharField(label='Serial Number', required=False)
     itemNumber = forms.IntegerField(label='Item Number', required=False)

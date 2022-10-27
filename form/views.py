@@ -9,7 +9,10 @@ def home(request):
     print(request)
     if request.method == 'POST':
         form = Form(request.POST)
+        print(form)
         if form.is_valid():
+            branchName = form.cleaned_data['branchName']
+            email = form.cleaned_data['email']
             type = form.cleaned_data['type']
             serialNumber = form.cleaned_data['serialNumber']
             itemNumber = form.cleaned_data['itemNumber']
@@ -19,9 +22,16 @@ def home(request):
             centerQuantity = form.cleaned_data['centerQuantity']
             componentQuantity = form.cleaned_data['componentQuantity']
             componentSelection = form.cleaned_data['componentSelection']
+            componentQuantity1 = form.cleaned_data['componentQuantity1']
+            componentSelection1 = form.cleaned_data['componentSelection1']
+            componentQuantity2 = form.cleaned_data['componentQuantity2']
+            componentSelection2 = form.cleaned_data['componentSelection2']
             commentary = form.cleaned_data['commentary']
             
             html = render_to_string('emails/email.html', {
+
+                'branchName': branchName,
+                'email': email,
                 'type': type,
                 'serialNumber': serialNumber,
                 'item': itemNumber,
@@ -31,6 +41,10 @@ def home(request):
                 'centerQuantity': centerQuantity,
                 'componentQuantity': componentQuantity,
                 'componentSelection': componentSelection,
+                'componentQuantity1': componentQuantity1,
+                'componentSelection1': componentSelection1,
+                'componentQuantity2': componentQuantity2,
+                'componentSelection2': componentSelection2,
                 'commentary': commentary,
             }
             

@@ -14,7 +14,7 @@
 <body>
     <div>
         <h2> User Information</h2>
-        <form action="." method="POST" hx-post=".">
+        <form action="." method="POST">
             {% csrf_token %}
             <table>
                 <tbody>
@@ -88,7 +88,7 @@
                         <th>Component Quantity</th>
                         <td>{{form.componentQuantity1}}</td>
                         <th>Component Quantity</th>
-                        <td>{{form.componentQuantity3}}</td>
+                        <td>{{form.componentQuantity2}}</td>
                         <th>Component Quantity</th>
                         <td>{{form.componentQuantity3}}</td>
                     </tr>
