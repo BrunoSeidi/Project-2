@@ -1,6 +1,5 @@
 th{
     text-align: left;
-    margin-top: 5px;
 }
 
 #component{
@@ -9,7 +8,7 @@ th{
 
 #extraField{
     border-collapse:separate; 
-    border-spacing: 10px;
+    border-spacing: 1rem;
     visibility: collapse;
     
   }
