@@ -66,7 +66,7 @@
             <table id="component">
                 <tbody>
                     <tr>
-                        <th>Select the component</th>
+                        <th>Select the Component</th>
                         <td>{{form.componentSelection}}</td>
                         <th>Component Quantity</th>
                         <td>{{form.componentQuantity}}</td>
@@ -74,9 +74,7 @@
                 </tbody>
                 <div id="form-added"></div>
             </table>
-            
             <table id="extraField">
-                <hr>
                 <tbody>
                     <tr>
                         <th>Select the Component</th>
@@ -119,12 +117,9 @@
         </table>
         <button id="add-more" type="button">Add more components</button>
         <input type="submit" id="button" value="Submit">
-        <!--LEMBRAR DE RECEBER OS DADOS EM TUPLAS PARA INSERIR NO CAMPO DE TIPOS-->
         </form>
     
     </div>
-
-
 
     <script>
         const AddMoreBtn = document.getElementById('add-more')
@@ -136,8 +131,7 @@
                 document.getElementById('extraField').style.visibility='collapse';
             }
         }
-
-        //////////////////////
+        //ISSO É O OUTRO MODO PARA INCREMENTAR CAMPO, MAS NÃO CONSEGUI PEGAR OS DADOS E INSERIR NO EMAIL
         // const AddMoreBtn = document.getElementById('add-more')
         // AddMoreBtn.addEventListener('click', add_new_form)
         // function add_new_form(event) {

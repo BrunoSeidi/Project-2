@@ -157,7 +157,6 @@ component_type = (
  ('WAVE SPRING WASHER', 'WAVE SPRING WASHER')
 )
 
-
 material_type = (
     ('material', 'Search with material'),
     ('serial', 'Search with serial number'),

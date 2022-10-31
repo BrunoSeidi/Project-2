@@ -3,15 +3,15 @@ th{
 }
 
 #component{
-    border-collapse:separate; 
+    border-collapse:separate;
+    border-spacing: 1rem;
 }
 
 #extraField{
     border-collapse:separate; 
     border-spacing: 1rem;
     visibility: collapse;
-    
-  }
+}
 
 #button{
     background-color: #00c851;
