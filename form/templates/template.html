@@ -13,6 +13,7 @@
 
 <body>
     <div>
+        <img src="{% static '/images/weglogo.jpg' %}" width="3%">
         <h2> User Information</h2>
         <form action="." method="POST">
             {% csrf_token %}
@@ -107,7 +108,7 @@
             </table>
             
         </div>
-        <table>
+        <table id="commentary">
             <tbody>
                 <tr>
                     <th>Commentary</th>
