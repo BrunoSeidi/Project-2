@@ -15,7 +15,6 @@ th{
 #extraField{
     border-collapse:separate; 
     border-spacing: 1rem;
-    visibility: collapse;
 }
 
 #button{

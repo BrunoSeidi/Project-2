@@ -14,7 +14,7 @@ def home(request):
             name = form.cleaned_data['name']
             branchName = form.cleaned_data['branchName']
             email = form.cleaned_data['email']
-
+            
             type = form.cleaned_data['type']
             serialNumber = form.cleaned_data['serialNumber']
             itemNumber = form.cleaned_data['itemNumber']
