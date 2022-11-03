@@ -1,3 +1,4 @@
+from logging import PlaceHolder
 from django import forms
 from .component import component_type, material_type
 
@@ -10,10 +11,10 @@ class Form(forms.Form):
     type = forms.ChoiceField(choices=material_type, initial="Select One Option")
     serialNumber = forms.CharField(label='Serial Number', required=False)
     itemNumber = forms.IntegerField(label='Item Number', required=False)
-    date = forms.DateField(label='Manufactoring Date',widget=forms.DateInput(attrs={'placeholder':'Ex: 10/05/2022'}))
-    phase = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Ex: Monophasic'}))
-    capacity = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Ex: 15cv'}))
-    centerQuantity = forms.IntegerField(label='Center Quantity')
+    date = forms.DateField(label='Manufactoring Date', widget=forms.DateInput(attrs={'placeholder':'Ex: 10/05/2022'}))
+    phase = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Ex: SINGLE PHASE'}))
+    capacity = forms.CharField(label='Output Power', widget=forms.TextInput(attrs={'placeholder': 'Ex: 15cv'}))
+    centerQuantity = forms.IntegerField(widget=forms.NumberInput(attrs={'placeholder': '2'}))
 
     componentSelection = forms.ChoiceField(choices=component_type, label='Component Selection', required=True)
     componentQuantity = forms.IntegerField(label='Component Quantity', required=True)
