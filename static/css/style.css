@@ -1,11 +1,24 @@
 th{
     text-align: left;
+    font-size: medium;
+    font-family:'Times New Roman', Times, serif
 }
 
 #commentary{
     border-collapse:separate; 
     border-spacing: 1rem;
+
 }
+td{
+    padding-bottom: 1em;
+    padding-right: 1rem;
+}
+th{
+    padding-left: 3px;
+    padding-bottom: 1em;
+    font-size: 105%;
+}
+
 
 #component{
     border-collapse:separate;
@@ -18,13 +31,13 @@ th{
 }
 
 #button{
-    background-color: #00c851;
+    background-color: rgb(173, 173, 173);
     margin: auto;
     display: flex;
     padding: 4px 20px;
     border-radius: 5px;
     font-size: medium;
-    font-family: inherit;
+    font-family:'Times New Roman', Times, serif
 }
 
 h2{
@@ -32,4 +45,20 @@ h2{
     color: white;
     font-family: inherit;
     line-height: 1.2;
+}
+
+input, select, textarea{
+    border: 2px solid rgb(28, 27, 34);
+    border-radius: 4px;
+    font-size: medium;
+}
+
+body{
+    background-color: #e5e7e9;
+}
+
+#add-more{
+    background-color: rgb(173, 173, 173);
+    font-family:'Times New Roman', Times, serif;
+    font-size: medium;
 }

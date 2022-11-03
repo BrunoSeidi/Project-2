@@ -25,5 +25,5 @@ class Form(forms.Form):
     componentQuantity3 = forms.IntegerField(label='Component Quantity', required=False)
     componentSelection4 = forms.ChoiceField(choices=component_type, label='Component Selection', required=False)
     componentQuantity4 = forms.IntegerField(label='Component Quantity', required=False)
-    commentary = forms.CharField(widget=forms.Textarea(attrs={"rows":8, "cols":80}))
+    commentary = forms.CharField(widget=forms.Textarea(attrs={"rows":8, "cols":200}))
 
