@@ -38,7 +38,7 @@
         <h2>Engine Information</h2>
             <table>
                 <tbody>
-                    <tr>
+                    <tr id="type">
                         <th>Type</th>
                         <td>{{form.type}}</td>
                     </tr>
@@ -49,8 +49,10 @@
                         <td>{{form.itemNumber}}</td>
                     </tr>
                     <tr>
+                        
                         <th>Manufactoring Date</th>
                         <td>{{form.date}}</td>
+                        <p>Manufactoring date is required if type is Material number</p>
                         <th>Phase</th>
                         <td>{{form.phase}}</td>
                         <th>Output Power</th>
@@ -126,6 +128,7 @@
 
     <script>
         const AddMoreBtn = document.getElementById('add-more')
+        
         AddMoreBtn.onclick = function(){
             if (document.getElementById('extraField').style.visibility == 'collapse'){
                 document.getElementById('extraField').style.visibility='visible';
@@ -133,7 +136,7 @@
             } else{
                 document.getElementById('extraField').style.visibility='collapse';
             }
-        }
+        };
 
         // ISSO É O OUTRO MODO PARA INCREMENTAR CAMPO, MAS NÃO CONSEGUI PEGAR OS DADOS E INSERIR NO EMAIL
         // const AddMoreBtn = document.getElementById('add-more')
