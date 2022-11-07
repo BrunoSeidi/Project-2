@@ -6,10 +6,9 @@ from django.template.loader import render_to_string
 
 
 def home(request):
-    print(request)
     if request.method == 'POST':
         form = Form(request.POST)
-        print(form)
+ 
         if form.is_valid():
             name = form.cleaned_data['name']
             branchName = form.cleaned_data['branchName']
@@ -33,6 +32,7 @@ def home(request):
             componentQuantity4 = form.cleaned_data['componentQuantity4']
             componentSelection4 = form.cleaned_data['componentSelection4']
             commentary = form.cleaned_data['commentary']
+            print(type)
             
             html = render_to_string('emails/email.html', {
                 'name': name,

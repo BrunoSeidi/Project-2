@@ -14,9 +14,9 @@ class Form(forms.Form):
     date = forms.DateField(widget=forms.DateInput(attrs={'placeholder':'Ex: 10/05/2022'}), required=False)
     phase = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Ex: SINGLE PHASE'}))
     capacity = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Ex: 15cv'}))
-    centerQuantity = forms.IntegerField(widget=forms.NumberInput(attrs={'placeholder': '2'}))
+    centerQuantity = forms.IntegerField(widget=forms.NumberInput(attrs={'placeholder': 'Ex: 2'}))
 
-    componentSelection = forms.ChoiceField(choices=component_type, label='Component Selection', required=True)
+    componentSelection= forms.ChoiceField(choices=component_type, label='Component Selection', required=True)
     componentQuantity = forms.IntegerField(label='Component Quantity', required=True)
     componentSelection1 = forms.ChoiceField(choices=component_type, label='Component Selection', required=False)
     componentQuantity1 = forms.IntegerField(label='Component Quantity,', required=False)
