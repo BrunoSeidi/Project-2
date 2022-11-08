@@ -158,6 +158,6 @@ component_type = (
 )
 
 material_type = (
-    ('material', 'Search with material'),
-    ('serial', 'Search with serial number'),
+    ('Material', 'Search with material'),
+    ('Serial', 'Search with serial number'),
 )

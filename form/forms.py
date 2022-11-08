@@ -11,7 +11,7 @@ class Form(forms.Form):
     type = forms.ChoiceField(choices=material_type, initial="Select One Option")
     serialNumber = forms.CharField(label='Serial Number', required=False)
     itemNumber = forms.CharField(label='Item Number', required=False)
-    
+
     date = forms.DateField(widget=forms.DateInput(attrs={'placeholder':'Ex: 10/05/2022'}), required=False)
     phase = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Ex: SINGLE PHASE'}))
     capacity = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Ex: 15cv'}))
@@ -28,7 +28,3 @@ class Form(forms.Form):
     componentSelection4 = forms.ChoiceField(choices=component_type, label='Component Selection', required=False)
     componentQuantity4 = forms.IntegerField(label='Component Quantity', required=False)
     commentary = forms.CharField(widget=forms.Textarea(attrs={"rows":8, "cols":200}))
-
-
-
-
