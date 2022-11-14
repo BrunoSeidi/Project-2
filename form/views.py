@@ -1,4 +1,3 @@
-import email
 from django.shortcuts import render, redirect
 from .forms import Form
 from django.core.mail import send_mail
@@ -32,7 +31,6 @@ def home(request):
             componentQuantity4 = form.cleaned_data['componentQuantity4']
             componentSelection4 = form.cleaned_data['componentSelection4']
             commentary = form.cleaned_data['commentary']
-            print(type)
             
             html = render_to_string('emails/email.html', {
                 'name': name,
@@ -59,7 +57,7 @@ def home(request):
             }
             
             ) 
-            send_mail('Kits request', 'Message', 'no-reply@weg.net', ['koura@weg.net'], html_message=html, fail_silently=False)
+            send_mail('Kits request', 'Message', 'parts-wmo@weg.net', ['koura@weg.net'], html_message=html, fail_silently=False)
             
             return redirect('home')
     else:
