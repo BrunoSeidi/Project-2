@@ -1,3 +1,4 @@
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -6,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>WEG Kit's Request</title>
+    <title>WMO - PARTS QUOTATION REQUEST</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
 
 </head>
@@ -35,22 +36,17 @@
                 </tbody>
             </table>    
             
-        <h2>Engine Information</h2>
+        <h2>Motor Information</h2>
             <table>
                 <tbody>
                     <tr id="type">
                         <th>Type</th>
                         <td>{{form.type}}</td>
+                        <th>Number</th>
+                        <td>{{form.number}}</td>
                     </tr>
                     <tr>
-                        <th>Serial Number</th>
-                        <td>{{form.serialNumber}}</td>
-                        <th>or Material Number</th>
-                        <td>{{form.itemNumber}}</td>
-                    </tr>
-                    <tr>
-
-                        <th>Manufactoring Date</th>
+                        <th>Manufacturing Date</th>
                         <td>{{form.date}}</td>
 
                         <th>Phase</th>
@@ -63,102 +59,74 @@
 
                 </tbody>
         </table>
-        <p style="color: red; font-size: small;">*Manufactoring date is required if the type is Material</p>
+        <p style="color: red; font-size: small;">*Manufacturing Date is required if the type is Material</p>
     </div>
     <div id="component-form">
         <h2>Component</h2>
         <div class="parts-form">
-            <table id="component">
+            <table id="component-1">
                 <tbody>
-                    <tr>
+                    <tr id="component-tr">
                         <th>Select the Component</th>
                         <td>{{form.componentSelection}}</td>
                         <th>Component Quantity</th>
                         <td>{{form.componentQuantity}}</td>
-                        <td><button id="add-more" type="button">Add more components</button></td>
-                    </tr>
-                </tbody>
-                <div id="form-added"></div>
-            </table>
-            <table id="extraField" style="visibility: collapse">
-                <hr>
-                <tbody>
-                    <tr>
-                        <th>Select the Component</th>
-                        <td>{{form.componentSelection1}}</td>
-                        <th>Component Quantity</th>
-                        <td>{{form.componentQuantity1}}</td>
-                    </tr>
-
-                    <tr>
-                        <th>Select the Component</th>
-                        <td>{{form.componentSelection2}}</td>
-                        <th>Component Quantity</th>
-                        <td>{{form.componentQuantity2}}</td>
-                    </tr>
-
-                    <tr>
-                        <th>Select the Component</th>
-                        <td>{{form.componentSelection3}}</td>
-                        <th>Component Quantity</th>
-                        <td>{{form.componentQuantity3}}</td>
-                    </tr>
-
-                    <tr>
-                        <th>Select the Component</th>
-                        <td>{{form.componentSelection4}}</td>
-                        <th>Component Quantity</th>
-                        <td>{{form.componentQuantity4}}</td>
                     </tr>
                 </tbody>
             </table>
-            
+            <div id="form-added"></div>
+            <button id="add-more" type="button">Add more components</button> 
         </div>
+        
+        
         <table id="commentary">
             <tbody>
                 <tr>
-                    <th>Commentary</th>
+                    <th> Comments</th>
                     <td>{{form.commentary}}</td>
                 </tr>
             </tbody>
         </table>
         <input type="submit" id="button" value="Submit">
     </form>
-    </div>
+</div>
 
     <script>
         const AddMoreBtn = document.getElementById('add-more')
-        const IsMaterial = document.getElementById('id_type')
-        
         AddMoreBtn.onclick = function(){
-            if (document.getElementById('extraField').style.visibility == 'collapse'){
-                document.getElementById('extraField').style.visibility='visible';
-                alert('Extra fields are not required to be filled')             
-            } else{
-                document.getElementById('extraField').style.visibility='collapse';
+            const AddMoreBtn = document.getElementById('add-more')
+            AddMoreBtn.addEventListener('click', add_new_form)
+            function add_new_form(event) {
+                var newField = document.createElement('input');
+                newField.setAttribute('placeholder', 'extra components')
+                if (event) {
+                    event.preventDefault()
+                }
+                //id
+                const newId = document.getElementsByClassName('parts-form')
+                const idIncrement = newId.length + 1
+                //
+                const formAdd = document.getElementById('form-added')
+                //add new empty form
+                var componentForm = document.getElementById('component-1').cloneNode(true)
+                componentForm.setAttribute('class', 'parts-form')
+                //id increment
+                componentForm.setAttribute('id', `component-${idIncrement}`)
+                formAdd.append(componentForm)
             }
         };
- 
-            // ISSO É O OUTRO MODO PARA INCREMENTAR CAMPO, MAS NÃO CONSEGUI PEGAR OS DADOS E INSERIR NO EMAIL
-            // const AddMoreBtn = document.getElementById('add-more')
-            // AddMoreBtn.addEventListener('click', add_new_form)
-            // function add_new_form(event) {
-            //     if (event) {
-            //         event.preventDefault()
-            //     }
-            //     //id
-            //     const newId = document.getElementsByClassName('parts-form')
-            //     const idIncrement = newId.length + 1
-            //     //
-            //     const formAdd = document.getElementById('form-added')
-            //     //add new empty form
-            //     var componentForm = document.getElementById('component').cloneNode(true)
-            //     componentForm.setAttribute('class', 'parts-form')
-            //     //id increment
-            //     componentForm.setAttribute('id', `component-${idIncrement}`)
-            //     formAdd.append(componentForm)
-    </script>
+        //Allow only one click on submit button
+        const SendBtn = document.getElementById('button')
+        SendBtn.onclick=function(e){
+            const SendBtn = document.getElementById('button')
+            SendBtn.addEventListener('click', single_click)
+            function single_click(event){
+                e.preventDefault();
+                document.getElementById('button').disabled=true;
+            }
+        };
 
+    </script>
 </body>
 
 </html>

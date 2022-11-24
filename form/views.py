@@ -14,50 +14,39 @@ def home(request):
             email = form.cleaned_data['email']
             
             type = form.cleaned_data['type']
-            serialNumber = form.cleaned_data['serialNumber']
-            itemNumber = form.cleaned_data['itemNumber']
+            number = form.cleaned_data['number']
             date = form.cleaned_data['date']
             phase = form.cleaned_data['phase']
             capacity = form.cleaned_data['capacity']
             centerQuantity = form.cleaned_data['centerQuantity']
             componentQuantity = form.cleaned_data['componentQuantity']
             componentSelection = form.cleaned_data['componentSelection']
-            componentQuantity1 = form.cleaned_data['componentQuantity1']
-            componentSelection1 = form.cleaned_data['componentSelection1']
-            componentQuantity2 = form.cleaned_data['componentQuantity2']
-            componentSelection2 = form.cleaned_data['componentSelection2']
-            componentQuantity3 = form.cleaned_data['componentQuantity3']
-            componentSelection3 = form.cleaned_data['componentSelection3']
-            componentQuantity4 = form.cleaned_data['componentQuantity4']
-            componentSelection4 = form.cleaned_data['componentSelection4']
             commentary = form.cleaned_data['commentary']
+            # componentQuantity1 = form.cleaned_data['componentQuantity1']
+            # componentSelection1 = form.cleaned_data['componentSelection1']
+            # componentQuantity2 = form.cleaned_data['componentQuantity2']
+            # componentSelection2 = form.cleaned_data['componentSelection2']
+            # componentQuantity3 = form.cleaned_data['componentQuantity3']
+            # componentSelection3 = form.cleaned_data['componentSelection3']
+            # componentQuantity4 = form.cleaned_data['componentQuantity4']
+            # componentSelection4 = form.cleaned_data['componentSelection4']
             
             html = render_to_string('emails/email.html', {
                 'name': name,
                 'branchName': branchName,
                 'email': email,
                 'type': type,
-                'serialNumber': serialNumber,
-                'item': itemNumber,
+                'number': number,
                 'date': date,
                 'phase': phase,
                 'capacity': capacity,
                 'centerQuantity': centerQuantity,
                 'componentQuantity': componentQuantity,
                 'componentSelection': componentSelection,
-                'componentQuantity1': componentQuantity1,
-                'componentSelection1': componentSelection1,
-                'componentQuantity2': componentQuantity2,
-                'componentSelection2': componentSelection2,
-                'componentQuantity3': componentQuantity3,
-                'componentSelection3': componentSelection3,
-                'componentQuantity4': componentQuantity4,
-                'componentSelection4': componentSelection4,
                 'commentary': commentary,
-            }
-            
-            ) 
-            send_mail('Kits request', 'Message', 'parts-wmo@weg.net', ['koura@weg.net'], html_message=html, fail_silently=False)
+            }           
+            )
+            send_mail('Kits request', 'Message', 'parts-wmo@weg.net', ['koura@weg.net', email], html_message=html, fail_silently=False)
             
             return redirect('home')
     else:

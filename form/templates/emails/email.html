@@ -1,37 +1,66 @@
-<h2 id="title">Submission</h2>
+{% load static %}
 
-<p><b>Branch Name:</b> {{branchName}}</p>
-<p><b>Email:</b> {{email}}</p>
-<p><b>Name:</b> {{name}}</p>
-<hr>
-<p><b>Type:</b> {{type}}</p>
-<p><b>Serial Number:</b> {{serialNumber}}</p>
-<p><b>Material Number:</b> {{item}}</p>
-<p><b>Manufactoring Date:</b> {{date}}</p>
-<p><b>Output Power:</b> {{capacity}}</p>
-<p><b>Pole:</b> {{centerQuantity}}</p>
-<hr>
-<p><b>Component Selection1:</b> {{componentSelection}}</p>
-<p><b>Component Quantity:</b> {{componentQuantity}}</p>
-<hr>
-
-<p><b>Component Selection2:</b> {{componentSelection1}}</p>
-<p><b>Component Quantity:</b> {{componentQuantity1}}</p>
-<hr>
-<p><b>Component Selection3:</b> {{componentSelection2}}</p>
-<p><b>Component Quantity:</b> {{componentQuantity2}}</p>
-<hr>
-<p><b>Component Selection4:</b> {{componentSelection3}}</p>
-<p><b>Component Quantity:</b> {{componentQuantity3}}</p>
-<hr>
-<p><b>Component Selection5:</b> {{componentSelection4}}</p>
-<p><b>Component Quantity:</b> {{componentQuantity4}}</p>
-<hr>
-<p><b>Commentary:</b> {{commentary}}</p> 
-
-<style>
-    .title{
-        margin-bottom: 2px;
-        text-align: center;
-    }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td><b>Branch Name:</b> </td> 
+            <td>{{branchName}}</td>
+        </tr>
+        <hr>
+        <tr>
+            <td><b>Email:</td> 
+            <td>{{email}}</td>
+        </tr>
+        <hr>
+        <tr>
+            <td><b>Name:</b></td> 
+            <td>{{name}}</td>
+        </tr>
+        <hr>
+        <tr>
+            <td><b>Type:</b></td> 
+            <td>{{type}}</td>
+        </tr>
+        <hr>
+        <tr>
+            <td><b>Number:</b> </td>
+            <td>{{number}}</td>
+        </tr>
+        <hr>
+        <tr>
+            <td><b>Manufacturing Date:</b></td>
+            <td>{{date}}</td>
+            
+        </tr>
+        <hr>
+        <tr>
+            <td><b>Output Power:</b> </td>
+            <td>{{capacity}}</td>
+        </tr>
+        <hr>
+        <tr>
+            <td><b>Pole:</b></td>
+            <td>{{centerQuantity}}</td>
+        </tr>
+        <hr>
+        <tr>
+            <td><b>Component Selection1:</b></td> 
+            <td>{{componentSelection}}</td>
+            <td><b>Component Quantity:</b></td> 
+            <td>{{componentQuantity}}</td>
+        </tr>
+        <tr>
+            <td><b> Comments:</b></td> 
+            <td>{{commentary}}</td>
+        </tr>
+    </table>
+</body>
+</html>
