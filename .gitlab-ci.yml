@@ -1,0 +1,93 @@
+image: registry-docker.weg.net/docker/compose:latest
+
+stages:
+  - DockerBuild
+  - TestVariable
+  - DeployDev
+  - DeployPRD
+
+DockerBuild:
+  stage: DockerBuild
+  variables:
+    DOCKERNAME: KITS-SOLICITATION
+    DOCKERIMAGE: kitssolicitation
+  tags:
+    - docker
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master" || "dev"'
+      when: manual
+  script:
+    - mkdir -p /root/.docker
+    - echo $DOCKER_AUTH_CONFIG > /root/.docker/config.json
+    - docker build -t ${REGISTRY_URL}/${DOCKERIMAGE}:latest .
+    - docker push ${REGISTRY_URL}/${DOCKERIMAGE}:latest
+
+TestVariable:
+  stage: TestVariable
+  environment:
+    name: production
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master" || "dev"'
+  script:
+    - echo "$ASTEC_COORDINATOR_MAIL"
+
+DeployDev:
+  stage: DeployDev
+  environment:
+    name: production
+  variables:
+    DOCKERNAME: KITS-SOLICITATION
+    DOCKERIMAGE: kitssolicitation
+    HOSTTAG: dcqas012057-widp   
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev"'
+      when: manual
+  tags:
+    - dcqas012057
+  script:
+    - mkdir -p /root/.docker
+    - echo $DOCKER_AUTH_CONFIG > /root/.docker/config.json
+    - docker pull ${REGISTRY_URL}/${DOCKERIMAGE}:latest
+    - if [ `docker ps -a | grep ${DOCKERNAME} |wc -l` -eq "1" ]  ; then docker rm -f ${DOCKERNAME}; fi
+    - docker run
+      -d
+      -p 35099:8000
+      -e TZ=America/Sao_Paulo
+      --name="${DOCKERNAME}"
+      --log-driver=gelf
+      --log-opt gelf-address=udp://logging.weg.net:12201
+      --hostname ${HOSTTAG}
+      --restart=on-failure:2
+      -v /interfaces/ep0:/interfaces/ep0
+      ${REGISTRY_URL}/${DOCKERIMAGE}:latest
+
+
+DeployPRD:
+  stage: DeployPRD
+  environment:
+    name: production
+  variables:
+    DOCKERNAME: KITS-SOLICITATION
+    DOCKERIMAGE: kitssolicitation
+    HOSTTAG: dcprd036187-widp 
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+      when: manual
+  tags:
+    -  dcprd036187
+  script:
+    - mkdir -p /root/.docker
+    - echo $DOCKER_AUTH_CONFIG > /root/.docker/config.json
+    - docker pull ${REGISTRY_URL}/${DOCKERIMAGE}:latest
+    - if [ `docker ps -a | grep ${DOCKERNAME} |wc -l` -eq "1" ]  ; then docker rm -f ${DOCKERNAME}; fi
+    - docker run
+      -d
+      -p 35099:8000
+      -e TZ=America/Sao_Paulo
+      --name="${DOCKERNAME}"
+      --log-driver=gelf
+      --log-opt gelf-address=udp://logging.weg.net:12201
+      --hostname ${HOSTTAG}
+      --restart=on-failure:2
+      -v /interfaces/ep0:/interfaces/ep0
+      ${REGISTRY_URL}/${DOCKERIMAGE}:latest

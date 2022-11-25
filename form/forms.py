@@ -1,6 +1,9 @@
 from django import forms
 from .component import component_type, material_type
 
+class extraComponent(forms.Form):
+    componentSelection= forms.ChoiceField(choices=component_type, label='Component Selection', required=True)
+    componentQuantity = forms.IntegerField(label='Component Quantity', required=True)
 
 class Form(forms.Form):
     branchName = forms.CharField(widget=forms.TextInput(attrs={"size": 50}))
@@ -15,7 +18,15 @@ class Form(forms.Form):
     capacity = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Ex: 15cv'}), required=False)
     centerQuantity = forms.IntegerField(widget=forms.NumberInput(attrs={'placeholder': 'Ex: 2'}), required=False)
 
-    componentSelection= forms.ChoiceField(choices=component_type, label='Component Selection', required=True)
-    componentQuantity = forms.IntegerField(label='Component Quantity', required=True)
+    # componentSelection= forms.ChoiceField(choices=component_type, label='Component Selection', required=True)
+    # componentQuantity = forms.IntegerField(label='Component Quantity', required=True)
 
     commentary = forms.CharField(widget=forms.Textarea(attrs={"rows":8, "cols":200}))
+    
+class Extra:
+    class Meta:
+        model = extraComponent
+        fields = (
+            'componentSelection',
+            'componentQuantity',
+        )

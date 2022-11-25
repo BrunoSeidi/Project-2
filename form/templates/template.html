@@ -67,15 +67,18 @@
             <table id="component-1">
                 <tbody>
                     <tr id="component-tr">
-                        <th>Select the Component</th>
+                        {% for item in form %}
+                            {% include "form/extra.html" %}
+                        {% endfor %}
+                        <!-- <th>Select the Component</th>
                         <td>{{form.componentSelection}}</td>
                         <th>Component Quantity</th>
-                        <td>{{form.componentQuantity}}</td>
+                        <td>{{form.componentQuantity}}</td> -->
                     </tr>
                 </tbody>
             </table>
             <div id="form-added"></div>
-            <button id="add-more" type="button">Add more components</button> 
+            <button id="add-more" type="button" hx-get="{% url 'create_extra' %}" hx-target="#component-tr" hx-swap="beforeend">Add more components</button> 
         </div>
         
         
@@ -115,6 +118,7 @@
                 formAdd.append(componentForm)
             }
         };
+
         //Allow only one click on submit button
         const SendBtn = document.getElementById('button')
         SendBtn.onclick=function(e){
@@ -127,6 +131,8 @@
         };
 
     </script>
+
+
 </body>
 
 </html>

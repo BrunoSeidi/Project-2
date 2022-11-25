@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import Form
+from .forms import Form, extraComponent, Extra
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 
@@ -7,6 +7,7 @@ from django.template.loader import render_to_string
 def home(request):
     if request.method == 'POST':
         form = Form(request.POST)
+        extra = extraComponent(request.POST)
  
         if form.is_valid():
             name = form.cleaned_data['name']
@@ -18,18 +19,10 @@ def home(request):
             date = form.cleaned_data['date']
             phase = form.cleaned_data['phase']
             capacity = form.cleaned_data['capacity']
-            centerQuantity = form.cleaned_data['centerQuantity']
-            componentQuantity = form.cleaned_data['componentQuantity']
-            componentSelection = form.cleaned_data['componentSelection']
+            # centerQuantity = form.cleaned_data['centerQuantity']
+            # componentQuantity = form.cleaned_data['componentQuantity']
+            # componentSelection = form.cleaned_data['componentSelection']
             commentary = form.cleaned_data['commentary']
-            # componentQuantity1 = form.cleaned_data['componentQuantity1']
-            # componentSelection1 = form.cleaned_data['componentSelection1']
-            # componentQuantity2 = form.cleaned_data['componentQuantity2']
-            # componentSelection2 = form.cleaned_data['componentSelection2']
-            # componentQuantity3 = form.cleaned_data['componentQuantity3']
-            # componentSelection3 = form.cleaned_data['componentSelection3']
-            # componentQuantity4 = form.cleaned_data['componentQuantity4']
-            # componentSelection4 = form.cleaned_data['componentSelection4']
             
             html = render_to_string('emails/email.html', {
                 'name': name,
@@ -40,9 +33,10 @@ def home(request):
                 'date': date,
                 'phase': phase,
                 'capacity': capacity,
-                'centerQuantity': centerQuantity,
-                'componentQuantity': componentQuantity,
-                'componentSelection': componentSelection,
+                'extra':extra,
+                # 'centerQuantity': centerQuantity,
+                # 'componentQuantity': componentQuantity,
+                # 'componentSelection': componentSelection,
                 'commentary': commentary,
             }           
             )
@@ -55,3 +49,9 @@ def home(request):
     return render(request, 'template.html', {
         'form': form
     })
+def create_extra(request):
+    form = Extra()
+    context = {
+        'form': form
+    }
+    return render(request, "template/extra.html", context)
