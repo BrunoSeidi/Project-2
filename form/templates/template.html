@@ -1,4 +1,3 @@
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +20,7 @@
             <table>
                 <tbody>
                     <tr>
-                        <th>Branch Name</th>   
+                        <th>Branch Name</th>
                         <td>{{form.branchName}}</td>
 
                     </tr>
@@ -34,9 +33,9 @@
                     <tr>
                     </tr>
                 </tbody>
-            </table>    
-            
-        <h2>Motor Information</h2>
+            </table>
+
+            <h2>Motor Information</h2>
             <table>
                 <tbody>
                     <tr id="type">
@@ -58,80 +57,64 @@
                     </tr>
 
                 </tbody>
-        </table>
-        <p style="color: red; font-size: small;">*Manufacturing Date is required if the type is Material</p>
-    </div>
-    <div id="component-form">
-        <h2>Component</h2>
-        <div class="parts-form">
-            <table id="component-1">
-                <tbody>
-                    <tr id="component-tr">
-                        {% for item in form %}
-                            {% include "form/extra.html" %}
-                        {% endfor %}
-                        <!-- <th>Select the Component</th>
-                        <td>{{form.componentSelection}}</td>
-                        <th>Component Quantity</th>
-                        <td>{{form.componentQuantity}}</td> -->
-                    </tr>
-                </tbody>
             </table>
-            <div id="form-added"></div>
-            <button id="add-more" type="button" hx-get="{% url 'create_extra' %}" hx-target="#component-tr" hx-swap="beforeend">Add more components</button> 
-        </div>
-        
-        
-        <table id="commentary">
-            <tbody>
-                <tr>
-                    <th> Comments</th>
-                    <td>{{form.commentary}}</td>
-                </tr>
-            </tbody>
-        </table>
-        <input type="submit" id="button" value="Submit">
-    </form>
-</div>
+            <p style="color: red; font-size: small;">*Manufacturing Date is required if the type is Material</p>
+
+            <div id="component-form">
+                <h2>Component</h2>
+                <div class="parts-form">
+                    <table id="component-1">
+                        <tbody>
+                            <tr>
+                                <th>Select the Component</th>
+                                <th>Component Quantity</th>
+                            </tr>
+                            <tr id="component-tr">
+                                <td id="selectComp">{{form.componentSelection}}</td>
+                                <td id="quantityComp">{{form.componentQuantity}}</td>
+                            </tr>
+                        </tbody>
+
+                        <tbody id="addItems"></tbody>
+
+                    </table>
+                    <div id="form-added"></div>
+                    <button id="add-more" onclick="addItem()" id="sspusd1" value="Add Row" type="button">Add more components</button>
+                </div>
+
+                <table id="commentary">
+                    <tbody>
+                        <tr>
+                            <th> Comments</th>
+                            <td>{{form.commentary}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <input type="submit" id="button" value="Submit">
+        </form>
 
     <script>
-        const AddMoreBtn = document.getElementById('add-more')
-        AddMoreBtn.onclick = function(){
-            const AddMoreBtn = document.getElementById('add-more')
-            AddMoreBtn.addEventListener('click', add_new_form)
-            function add_new_form(event) {
-                var newField = document.createElement('input');
-                newField.setAttribute('placeholder', 'extra components')
-                if (event) {
-                    event.preventDefault()
-                }
-                //id
-                const newId = document.getElementsByClassName('parts-form')
-                const idIncrement = newId.length + 1
-                //
-                const formAdd = document.getElementById('form-added')
-                //add new empty form
-                var componentForm = document.getElementById('component-1').cloneNode(true)
-                componentForm.setAttribute('class', 'parts-form')
-                //id increment
-                componentForm.setAttribute('id', `component-${idIncrement}`)
-                formAdd.append(componentForm)
-            }
-        };
-
         //Allow only one click on submit button
-        const SendBtn = document.getElementById('button')
-        SendBtn.onclick=function(e){
-            const SendBtn = document.getElementById('button')
-            SendBtn.addEventListener('click', single_click)
-            function single_click(event){
+        //add new fields
+        function addItem() {
+            var html = "<tr>";
+                html += "<td> <select class='form-control' onblur='lineTotal(this);' name='choices'/> {% for k, v in component_type %} <option> {{v}} {% endfor %} </option> </td>";
+                html += "<td> <input type='number' class='form-control' onblur='lineTotal(this);' name='quantity'/> </td>";
+                html += "</tr>";
+                document.getElementById("addItems").insertRow().innerHTML = html;
+            };
+    
+        const SendBtn = document.getElementById('button');
+        SendBtn.onclick = function (e) {
+            const SendBtn = document.getElementById('button');
+            SendBtn.addEventListener('click', single_click);
+            function single_click(event) {
                 e.preventDefault();
-                document.getElementById('button').disabled=true;
+                document.getElementById('button').disabled = true;
             }
         };
-
     </script>
-
 
 </body>
 
