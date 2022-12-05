@@ -1,17 +1,18 @@
 from django.shortcuts import render, redirect
-from .forms import Form
+from .forms import Form, Form2
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from .component import component_type
-from django.forms.formsets import formset_factory
+
 
 
 
 def home(request):
+    form2 = Form2(request.POST)
     form = Form(request.POST)
     if request.method == 'POST':
-        choices = request.POST.getlist('choices')
-        quantity = request.POST.getlist('quantity')
+        choices = request.POST.get('choices')
+        quantity = request.POST.get('quantity')
 
         if form.is_valid():
             name = form.cleaned_data['name']
@@ -28,6 +29,8 @@ def home(request):
             componentSelection = form.cleaned_data['componentSelection']
             commentary = form.cleaned_data['commentary']
 
+            age = form2.cleaned_data['age']
+
             html = render_to_string('emails/email.html', {
                 'name': name,
                 'branchName': branchName,
@@ -43,14 +46,17 @@ def home(request):
                 'commentary': commentary,
                 'quantity': quantity,
                 'choices': choices,
+                'age': age,
             }           
             )
             send_mail('Kits request', 'Message', 'parts-wmo@weg.net', ['koura@weg.net', email], html_message=html, fail_silently=False)
             return redirect('home')
     else:
         form = Form()
-        
+        form2 = Form2()
+
     return render(request, 'template.html', {
         'form': form,
+        'form2':form2,
         'component_type': component_type,
     })
